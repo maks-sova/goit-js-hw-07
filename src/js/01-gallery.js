@@ -1,6 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-
+console.log(galleryItems);
 
 
 const divref = document.querySelector('.gallery');
@@ -51,4 +51,3 @@ divref.addEventListener('keydown', (evt) => {
 function blockStandartAction(evt) {
     evt.preventDefaut();
 }
-console.log(galleryItems);
