@@ -5,24 +5,24 @@ console.log(galleryItems);
 
 const divref = document.querySelector('.gallery');
 
-function creatGallaryMarkup(items) {
-    return items
-        .map((item) => {
-                    `<div class="gallery__item">
-                        <a class="gallery__link" href="${item.original}">
-                            <img
-                              class="gallery__image"
-                              src="${item.preview}"
-                              data-source="${item.original}"
-                              alt="${item.description}"
-                            />
-                        </a>
-                        </div>`
-        })
-        .join("");
+function makeGalleryItems(items) {
+  return items
+    .map(({ preview, description, original }) => {
+      return `<div class="gallery__item">
+    <a class="gallery__link" href="${original}">
+    <img loading="lazy" width="354" height="240"
+      class="gallery__image"
+      src="${preview}"
+      data-source="${original}"
+      alt="${description}"
+    />
+  </a>
+</div>`;
+    })
+    .join("");
 }
 
-const addGallaryMarkup = creatGallaryMarkup(galleryItems);
+const addGallaryMarkup = makeGalleryItems(galleryItems);
 
 divref.innerHTML = addGallaryMarkup;
 
@@ -37,7 +37,7 @@ function onImageClick(evt) {
     }
 
 const instance = basiclightbox.create(`
-    <img src="${evt.target.dataset.sourse}" width="800" heigth="600">
+    <img src="${evt.target.dataset.sourse}" width="400" heigth="300">
 `);
 instance.show();
 
